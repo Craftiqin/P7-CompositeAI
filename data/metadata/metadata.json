@@ -1,0 +1,348 @@
+{
+  "versions": [
+    {
+      "version": 1,
+      "file_name": "dataset_v1.csv",
+      "path": "/Users/143ns/BTECH/PORTFOLIO/Projects/P7-Gagana/CompositeAI/data/processed/dataset_v1.csv",
+      "created_at": "2026-08-13T04:00:46.985088+00:00",
+      "rows": 10000,
+      "columns": 9,
+      "quality_score": 95.0,
+      "statistics": {
+        "rows": 10000,
+        "columns": 9,
+        "duplicate_rows": 0,
+        "missing_values": 0,
+        "missing_by_column": {
+          "fiber": 0,
+          "resin_type": 0,
+          "density_g_cm3": 0,
+          "layer_count": 0,
+          "curing_temperature_c": 0,
+          "fiber_volume_fraction": 0,
+          "void_content_pct": 0,
+          "tensile_strength_mpa": 0,
+          "source_file": 0
+        },
+        "dtypes": {
+          "fiber": "str",
+          "resin_type": "str",
+          "density_g_cm3": "float64",
+          "layer_count": "int64",
+          "curing_temperature_c": "float64",
+          "fiber_volume_fraction": "float64",
+          "void_content_pct": "float64",
+          "tensile_strength_mpa": "float64",
+          "source_file": "str"
+        },
+        "numeric_columns": [
+          "density_g_cm3",
+          "layer_count",
+          "curing_temperature_c",
+          "fiber_volume_fraction",
+          "void_content_pct",
+          "tensile_strength_mpa"
+        ],
+        "categorical_columns": [
+          "fiber",
+          "resin_type",
+          "source_file"
+        ],
+        "numeric_summary": {
+          "density_g_cm3": {
+            "count": 10000.0,
+            "mean": 1.799,
+            "std": 0.232,
+            "min": 1.4,
+            "25%": 1.6,
+            "50%": 1.8,
+            "75%": 2.0,
+            "max": 2.2
+          },
+          "layer_count": {
+            "count": 10000.0,
+            "mean": 15.071,
+            "std": 5.467,
+            "min": 6.0,
+            "25%": 10.0,
+            "50%": 15.0,
+            "75%": 20.0,
+            "max": 24.0
+          },
+          "curing_temperature_c": {
+            "count": 10000.0,
+            "mean": 110.539,
+            "std": 28.788,
+            "min": 60.1,
+            "25%": 85.6,
+            "50%": 110.6,
+            "75%": 135.3,
+            "max": 160.0
+          },
+          "fiber_volume_fraction": {
+            "count": 10000.0,
+            "mean": 0.525,
+            "std": 0.101,
+            "min": 0.35,
+            "25%": 0.44,
+            "50%": 0.53,
+            "75%": 0.61,
+            "max": 0.7
+          },
+          "void_content_pct": {
+            "count": 10000.0,
+            "mean": 1.994,
+            "std": 0.861,
+            "min": 0.5,
+            "25%": 1.26,
+            "50%": 1.99,
+            "75%": 2.73,
+            "max": 3.5
+          },
+          "tensile_strength_mpa": {
+            "count": 10000.0,
+            "mean": 1605.76,
+            "std": 621.904,
+            "min": 456.4,
+            "25%": 1134.975,
+            "50%": 1485.8,
+            "75%": 1968.175,
+            "max": 4667.3
+          }
+        },
+        "correlation": {
+          "density_g_cm3": {
+            "density_g_cm3": 1.0,
+            "layer_count": 0.013,
+            "curing_temperature_c": -0.011,
+            "fiber_volume_fraction": -0.004,
+            "void_content_pct": -0.006,
+            "tensile_strength_mpa": -0.011
+          },
+          "layer_count": {
+            "density_g_cm3": 0.013,
+            "layer_count": 1.0,
+            "curing_temperature_c": 0.001,
+            "fiber_volume_fraction": -0.008,
+            "void_content_pct": 0.003,
+            "tensile_strength_mpa": 0.384
+          },
+          "curing_temperature_c": {
+            "density_g_cm3": -0.011,
+            "layer_count": 0.001,
+            "curing_temperature_c": 1.0,
+            "fiber_volume_fraction": 0.008,
+            "void_content_pct": 0.01,
+            "tensile_strength_mpa": 0.175
+          },
+          "fiber_volume_fraction": {
+            "density_g_cm3": -0.004,
+            "layer_count": -0.008,
+            "curing_temperature_c": 0.008,
+            "fiber_volume_fraction": 1.0,
+            "void_content_pct": -0.005,
+            "tensile_strength_mpa": 0.203
+          },
+          "void_content_pct": {
+            "density_g_cm3": -0.006,
+            "layer_count": 0.003,
+            "curing_temperature_c": 0.01,
+            "fiber_volume_fraction": -0.005,
+            "void_content_pct": 1.0,
+            "tensile_strength_mpa": -0.285
+          },
+          "tensile_strength_mpa": {
+            "density_g_cm3": -0.011,
+            "layer_count": 0.384,
+            "curing_temperature_c": 0.175,
+            "fiber_volume_fraction": 0.203,
+            "void_content_pct": -0.285,
+            "tensile_strength_mpa": 1.0
+          }
+        }
+      },
+      "column_mappings": {
+        "composite_strength_training.csv:fiber_type": "fiber",
+        "composite_strength_training.csv:resin_type": "resin_type",
+        "composite_strength_training.csv:density_g_cm3": "density_g_cm3",
+        "composite_strength_training.csv:layer_count": "layer_count",
+        "composite_strength_training.csv:curing_temperature_c": "curing_temperature_c",
+        "composite_strength_training.csv:fiber_volume_fraction": "fiber_volume_fraction",
+        "composite_strength_training.csv:void_content_pct": "void_content_pct",
+        "composite_strength_training.csv:tensile_strength_mpa": "tensile_strength_mpa"
+      }
+    },
+    {
+      "version": 2,
+      "file_name": "dataset_v2.csv",
+      "path": "/Users/143ns/BTECH/PORTFOLIO/Projects/P7-Gagana/CompositeAI/data/processed/dataset_v2.csv",
+      "created_at": "2026-08-13T13:56:09.113629+00:00",
+      "rows": 10000,
+      "columns": 9,
+      "quality_score": 95.0,
+      "statistics": {
+        "rows": 10000,
+        "columns": 9,
+        "duplicate_rows": 0,
+        "missing_values": 0,
+        "missing_by_column": {
+          "fiber": 0,
+          "resin_type": 0,
+          "density_g_cm3": 0,
+          "layer_count": 0,
+          "curing_temperature_c": 0,
+          "fiber_volume_fraction": 0,
+          "void_content_pct": 0,
+          "tensile_strength_mpa": 0,
+          "source_file": 0
+        },
+        "dtypes": {
+          "fiber": "str",
+          "resin_type": "str",
+          "density_g_cm3": "float64",
+          "layer_count": "int64",
+          "curing_temperature_c": "float64",
+          "fiber_volume_fraction": "float64",
+          "void_content_pct": "float64",
+          "tensile_strength_mpa": "float64",
+          "source_file": "str"
+        },
+        "numeric_columns": [
+          "density_g_cm3",
+          "layer_count",
+          "curing_temperature_c",
+          "fiber_volume_fraction",
+          "void_content_pct",
+          "tensile_strength_mpa"
+        ],
+        "categorical_columns": [
+          "fiber",
+          "resin_type",
+          "source_file"
+        ],
+        "numeric_summary": {
+          "density_g_cm3": {
+            "count": 10000.0,
+            "mean": 1.799,
+            "std": 0.232,
+            "min": 1.4,
+            "25%": 1.6,
+            "50%": 1.8,
+            "75%": 2.0,
+            "max": 2.2
+          },
+          "layer_count": {
+            "count": 10000.0,
+            "mean": 15.071,
+            "std": 5.467,
+            "min": 6.0,
+            "25%": 10.0,
+            "50%": 15.0,
+            "75%": 20.0,
+            "max": 24.0
+          },
+          "curing_temperature_c": {
+            "count": 10000.0,
+            "mean": 110.539,
+            "std": 28.788,
+            "min": 60.1,
+            "25%": 85.6,
+            "50%": 110.6,
+            "75%": 135.3,
+            "max": 160.0
+          },
+          "fiber_volume_fraction": {
+            "count": 10000.0,
+            "mean": 0.525,
+            "std": 0.101,
+            "min": 0.35,
+            "25%": 0.44,
+            "50%": 0.53,
+            "75%": 0.61,
+            "max": 0.7
+          },
+          "void_content_pct": {
+            "count": 10000.0,
+            "mean": 1.994,
+            "std": 0.861,
+            "min": 0.5,
+            "25%": 1.26,
+            "50%": 1.99,
+            "75%": 2.73,
+            "max": 3.5
+          },
+          "tensile_strength_mpa": {
+            "count": 10000.0,
+            "mean": 1605.76,
+            "std": 621.904,
+            "min": 456.4,
+            "25%": 1134.975,
+            "50%": 1485.8,
+            "75%": 1968.175,
+            "max": 4667.3
+          }
+        },
+        "correlation": {
+          "density_g_cm3": {
+            "density_g_cm3": 1.0,
+            "layer_count": 0.013,
+            "curing_temperature_c": -0.011,
+            "fiber_volume_fraction": -0.004,
+            "void_content_pct": -0.006,
+            "tensile_strength_mpa": -0.011
+          },
+          "layer_count": {
+            "density_g_cm3": 0.013,
+            "layer_count": 1.0,
+            "curing_temperature_c": 0.001,
+            "fiber_volume_fraction": -0.008,
+            "void_content_pct": 0.003,
+            "tensile_strength_mpa": 0.384
+          },
+          "curing_temperature_c": {
+            "density_g_cm3": -0.011,
+            "layer_count": 0.001,
+            "curing_temperature_c": 1.0,
+            "fiber_volume_fraction": 0.008,
+            "void_content_pct": 0.01,
+            "tensile_strength_mpa": 0.175
+          },
+          "fiber_volume_fraction": {
+            "density_g_cm3": -0.004,
+            "layer_count": -0.008,
+            "curing_temperature_c": 0.008,
+            "fiber_volume_fraction": 1.0,
+            "void_content_pct": -0.005,
+            "tensile_strength_mpa": 0.203
+          },
+          "void_content_pct": {
+            "density_g_cm3": -0.006,
+            "layer_count": 0.003,
+            "curing_temperature_c": 0.01,
+            "fiber_volume_fraction": -0.005,
+            "void_content_pct": 1.0,
+            "tensile_strength_mpa": -0.285
+          },
+          "tensile_strength_mpa": {
+            "density_g_cm3": -0.011,
+            "layer_count": 0.384,
+            "curing_temperature_c": 0.175,
+            "fiber_volume_fraction": 0.203,
+            "void_content_pct": -0.285,
+            "tensile_strength_mpa": 1.0
+          }
+        }
+      },
+      "column_mappings": {
+        "composite_strength_training.csv:fiber_type": "fiber",
+        "composite_strength_training.csv:resin_type": "resin_type",
+        "composite_strength_training.csv:density_g_cm3": "density_g_cm3",
+        "composite_strength_training.csv:layer_count": "layer_count",
+        "composite_strength_training.csv:curing_temperature_c": "curing_temperature_c",
+        "composite_strength_training.csv:fiber_volume_fraction": "fiber_volume_fraction",
+        "composite_strength_training.csv:void_content_pct": "void_content_pct",
+        "composite_strength_training.csv:tensile_strength_mpa": "tensile_strength_mpa"
+      }
+    }
+  ]
+}

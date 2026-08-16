@@ -1,11 +1,18 @@
+# Python/runtime cache
 __pycache__/
 *.py[cod]
+.ipynb_checkpoints/
+
+# Local environments and machine files
 .venv/
 .venv312/
 venv/
 .env
+.env.*
+!.env.example
 .DS_Store
-.ipynb_checkpoints/
+
+# User/import/generated datasets
 data/raw/*
 data/processed/*
 data/external/*
@@ -14,8 +21,18 @@ data/papers/*
 data/uploaded/*
 data/merged/*
 data/metadata/*
+
+# Generated plot artifacts. Core CSV/JSON training artifacts stay tracked.
+data/training/step3_plots/*
+
+# Runtime model experiments. Required app model is explicitly kept below.
 models/*
+saved_models/*
+
+# Generated reports. App can regenerate these from tracked data/model artifacts.
 reports/*
+
+# Keep empty runtime dirs
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 !data/external/.gitkeep
@@ -26,5 +43,30 @@ reports/*
 !data/merged/.gitkeep
 !data/metadata/.gitkeep
 !models/.gitkeep
-!saved_models/.gitkeep
 !reports/.gitkeep
+
+# Required install/demo artifacts for another system
+!data/kaggle/
+!data/kaggle/**
+!data/materials/
+!data/materials/**
+!data/reference_materials/
+!data/reference_materials/**
+!data/sequence/
+!data/sequence/**
+!data/training/
+!data/training/*.csv
+!data/training/*.json
+!data/processed/
+!data/processed/.gitkeep
+!data/processed/dataset_v*.csv
+!data/metadata/
+!data/metadata/.gitkeep
+!data/metadata/metadata.json
+!data/merged/
+!data/merged/.gitkeep
+!data/merged/merged_latest.csv
+!saved_models/
+!saved_models/.gitkeep
+!saved_models/best_strength_model.joblib
+!saved_models/model_metadata.json

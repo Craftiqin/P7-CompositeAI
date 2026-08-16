@@ -170,6 +170,7 @@ REQUIRED_RUNTIME_PATHS = {
 DASHBOARD_KPI_DATASET_PATH = PROJECT_ROOT / "data" / "training" / "ml_ready_features.csv"
 DASHBOARD_KPI_FEATURE_SPEC_PATH = PROJECT_ROOT / "data" / "training" / "feature_specification.json"
 DASHBOARD_KPI_PROFILE_PATH = PROJECT_ROOT / "data" / "training" / "feature_analysis_report.json"
+LOCAL_DATASET_FALLBACK_PATH = PROJECT_ROOT / "data" / "training" / "ml_ready_features.csv"
 
 WORKFLOW_STEPS = [
     (
@@ -3501,7 +3502,8 @@ def find_dataset_files(source_dir: Path) -> list[Path]:
 def select_dataset_version() -> pd.DataFrame | None:
     """Select and load processed dataset version or current session data."""
     versions = list_processed_versions()
-    choices = ["Current session dataset"] if get_current_dataset() is not None else []
+    current_data = get_current_dataset()
+    choices = ["Current session dataset"] if current_data is not None else []
     choices.extend([path.name for path in versions])
 
     if not choices:
@@ -3525,7 +3527,26 @@ def select_dataset_version() -> pd.DataFrame | None:
 def get_current_dataset() -> pd.DataFrame | None:
     """Return processed dataset held in Streamlit session state."""
     data = st.session_state.get("processed_dataset")
-    return data if isinstance(data, pd.DataFrame) else None
+    if isinstance(data, pd.DataFrame):
+        return data
+    return load_local_dataset_fallback()
+
+
+def load_local_dataset_fallback(
+    dataset_path: Path = LOCAL_DATASET_FALLBACK_PATH,
+) -> pd.DataFrame | None:
+    """Load bundled ML-ready dataset when no processed session dataset exists."""
+    if not dataset_path.exists():
+        return None
+    try:
+        data = pd.read_csv(dataset_path)
+    except Exception as exc:
+        LOGGER.exception("Failed to load local dataset fallback")
+        st.warning(f"Local dataset load failed: {exc}")
+        return None
+    st.session_state["processed_dataset"] = data
+    st.session_state["version_path"] = dataset_path
+    return data
 
 
 def issue_to_dict(issue: ValidationIssue) -> dict[str, Any]:

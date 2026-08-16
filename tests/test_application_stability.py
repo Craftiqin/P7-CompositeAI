@@ -89,6 +89,20 @@ class ApplicationStabilityTest(unittest.TestCase):
         self.assertIn("Rows: 10000", captions)
         self.assertIn("Columns: 8", captions)
 
+    def test_dataset_explorer_loads_local_dataset_without_processed_session(self) -> None:
+        """Dataset pages load bundled ML-ready dataset after fresh clone."""
+        app_file = Path(__file__).resolve().parents[1] / "app.py"
+        app_test = AppTest.from_file(str(app_file))
+        app_test.session_state["selected_page"] = "Dataset Explorer"
+        app_test.run(timeout=120)
+
+        self.assertEqual(app_test.exception, [])
+        self.assertIn("processed_dataset", app_test.session_state)
+        self.assertEqual(len(app_test.session_state["processed_dataset"]), 10_000)
+        self.assertFalse(
+            any("No processed dataset available" in item.value for item in app_test.info),
+        )
+
     def test_dashboard_kpi_missing_dataset_raises_actual_exception(self) -> None:
         """Dashboard KPI loader raises clear file error instead of returning zero."""
         with tempfile.TemporaryDirectory() as tmp:
