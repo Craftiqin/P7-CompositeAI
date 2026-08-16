@@ -1,0 +1,3 @@
+experiment,model,train_rows,test_rows,removed_train_outliers,test_mae,test_rmse,test_r2
+all_data_primary,ANN/MLP,8000,2000,0,32.51222564180672,43.37764030916816,0.9952189943216101
+outlier_filtered_training_only,ANN/MLP,7869,2000,131,34.889312976012036,52.136087845880205,0.9930934001870585

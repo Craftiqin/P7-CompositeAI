@@ -1,0 +1,43 @@
+{
+  "project_stage": "Step 2 - Data Cleaning and Preprocessing",
+  "source_dataset": "data/training/composite_strength_training.csv",
+  "target": "tensile_strength_mpa",
+  "categorical_features": [
+    "fiber_type",
+    "resin_type"
+  ],
+  "numerical_features": [
+    "density_g_cm3",
+    "layer_count",
+    "curing_temperature_c",
+    "fiber_volume_fraction",
+    "void_content_pct"
+  ],
+  "encoder": "OneHotEncoder(handle_unknown=\"ignore\")",
+  "scaler": "StandardScaler for numerical features",
+  "missing_value_policy": {
+    "current_missing_values": {
+      "fiber_type": 0,
+      "resin_type": 0,
+      "density_g_cm3": 0,
+      "layer_count": 0,
+      "curing_temperature_c": 0,
+      "fiber_volume_fraction": 0,
+      "void_content_pct": 0,
+      "tensile_strength_mpa": 0
+    },
+    "pipeline_numeric_strategy": "median",
+    "pipeline_categorical_strategy": "most_frequent"
+  },
+  "outlier_policy": {
+    "target_iqr_outliers": 168,
+    "target_outlier_range": {
+      "min": 3222.1,
+      "max": 4667.3
+    },
+    "action": "retain; domain review required"
+  },
+  "leakage_prevention": "Build pipeline now, but fit only on training split during Step 4.",
+  "stacking_sequence_data_available": false,
+  "version_date": "2026-08-13"
+}

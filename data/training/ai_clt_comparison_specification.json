@@ -1,0 +1,146 @@
+{
+  "project_stage": "Step 11 - AI vs Manual/CLT Comparison Backend",
+  "purpose": "Compare ANN tensile-strength prediction and CLT strain-allowable result only when both describe the same physical laminate case and can be expressed as the same engineering quantity.",
+  "ann_system": {
+    "model": "ANN/MLP saved sklearn Pipeline",
+    "artifact": "saved_models/best_strength_model.joblib",
+    "metadata": "saved_models/model_metadata.json",
+    "inputs": [
+      "fiber_type",
+      "resin_type",
+      "density_g_cm3",
+      "layer_count",
+      "curing_temperature_c",
+      "fiber_volume_fraction",
+      "void_content_pct"
+    ],
+    "output": "tensile_strength_mpa",
+    "output_unit": "MPa",
+    "validation_metrics": {
+      "mae_mpa": 32.51222564180672,
+      "rmse_mpa": 43.37764030916816,
+      "r2": 0.9952189943216101
+    },
+    "prohibited_changes": [
+      "Do not retrain ANN for Step 11.",
+      "Do not add stacking_sequence to current ANN inputs.",
+      "Do not modify preprocessing or saved model artifact."
+    ]
+  },
+  "clt_system": {
+    "module": "src/clt.py",
+    "supported_outputs": [
+      "Q",
+      "Qbar",
+      "A",
+      "B",
+      "D",
+      "ply strains",
+      "ply stresses",
+      "strain-allowable failure",
+      "lambda_cs"
+    ],
+    "lambda_cs_description": "Dimensionless load factor from source-compatible strain allowable route. It scales the supplied CLT load vector.",
+    "load_units": {
+      "Nx": "N/m",
+      "Ny": "N/m",
+      "Nxy": "N/m",
+      "Mx": "N",
+      "My": "N",
+      "Mxy": "N"
+    },
+    "source_material": {
+      "name": "TU Delft / Zenodo source-backed lamina card",
+      "doi": "10.5281/zenodo.15864524",
+      "E1_Pa": 127550000000.0,
+      "E2_Pa": 13030000000.0,
+      "G12_Pa": 6410000000.0,
+      "nu12": 0.3,
+      "ply_thickness_m": 0.000127
+    },
+    "reference_validation": {
+      "reference_lambda_cs": 10394.81,
+      "our_lambda_cs": 10319.4275,
+      "difference_percent": 0.7252,
+      "meaning": "TU Delft reference vs local CLT implementation only; not ANN vs CLT."
+    },
+    "prohibited_changes": [
+      "Do not alter CLT equations for Step 11 unless a real bug is discovered.",
+      "Do not fabricate base loads.",
+      "Do not treat Nx as MPa."
+    ]
+  },
+  "comparison_case": {
+    "fields": [
+      "ann_input",
+      "stacking_sequence",
+      "material_card",
+      "load_case",
+      "comparison_quantity",
+      "base_load_unit",
+      "material_equivalence_verified",
+      "material_equivalence_evidence",
+      "allowables",
+      "assumptions"
+    ],
+    "material_compatibility_policy": "Direct comparison requires explicit evidence that ANN sample material/process data and CLT material card represent the same physical material system. ANN category names alone are not sufficient.",
+    "allowed_material_statuses": [
+      "COMPATIBLE",
+      "NOT DIRECTLY COMPARABLE"
+    ]
+  },
+  "common_quantities": {
+    "equivalent_laminate_tensile_stress_mpa": {
+      "allowed_when": [
+        "material equivalence is verified",
+        "CLT load case is uniaxial tensile Nx > 0",
+        "Ny, Nxy, Mx, My, and Mxy are zero",
+        "base Nx unit is N/m",
+        "ply thickness and ply count are known",
+        "CLT lambda_cs is finite"
+      ],
+      "ann_equation": "ANN_common_value = predicted_tensile_strength_mpa",
+      "clt_equation": "failure_Nx_N_per_m = lambda_cs * base_Nx_N_per_m; CLT_common_value_MPa = failure_Nx_N_per_m / total_thickness_m / 1e6",
+      "unit": "MPa"
+    },
+    "tensile_load_capacity_n_per_m": {
+      "allowed_when": [
+        "all stress-mode conditions are satisfied",
+        "ANN tensile strength is treated as average laminate tensile stress for the verified same material case"
+      ],
+      "ann_equation": "ANN_common_value_N_per_m = predicted_tensile_strength_mpa * 1e6 * total_thickness_m",
+      "clt_equation": "CLT_common_value_N_per_m = lambda_cs * base_Nx_N_per_m",
+      "unit": "N/m"
+    }
+  },
+  "difference_calculation": {
+    "allowed_only_when": "Both common values represent the same physical quantity and same units.",
+    "equation": "relative_difference_percent = abs(ANN_common_value - CLT_common_value) / abs(CLT_common_value) * 100",
+    "reference": "CLT common value",
+    "label": "Relative difference from CLT",
+    "not_accuracy": true
+  },
+  "comparison_prohibited_when": [
+    "material equivalence is not verified",
+    "ANN output is tensile strength MPa but CLT output remains raw lambda_cs",
+    "base Nx load is missing",
+    "base load unit is not N/m",
+    "laminate total thickness is unknown",
+    "load case is compression, biaxial, shear, or bending",
+    "CLT lambda_cs is missing or non-finite"
+  ],
+  "manual_trace_required": [
+    "ANN tensile-strength input/output",
+    "CLT base Nx",
+    "CLT lambda_cs",
+    "failure_Nx = lambda_cs * base_Nx",
+    "total_thickness = ply_count * ply_thickness",
+    "equivalent stress = failure_Nx / total_thickness",
+    "relative difference from CLT"
+  ],
+  "implementation": {
+    "module": "src/ai_clt_comparison.py",
+    "tests": "tests/test_ai_clt_comparison.py",
+    "ui_status": "not implemented in Step 11"
+  }
+}

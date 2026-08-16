@@ -1,0 +1,121 @@
+{
+  "project_stage": "Step 3 - Feature Engineering and ML-Ready Dataset Preparation",
+  "dataset_source": "data/training/composite_strength_training.csv",
+  "ml_ready_dataset": "data/training/ml_ready_features.csv",
+  "target": "tensile_strength_mpa",
+  "baseline_features": [
+    "fiber_type",
+    "resin_type",
+    "density_g_cm3",
+    "layer_count",
+    "curing_temperature_c",
+    "fiber_volume_fraction",
+    "void_content_pct"
+  ],
+  "categorical_features": [
+    "fiber_type",
+    "resin_type"
+  ],
+  "numerical_features": [
+    "density_g_cm3",
+    "layer_count",
+    "curing_temperature_c",
+    "fiber_volume_fraction",
+    "void_content_pct"
+  ],
+  "engineered_features": [],
+  "engineering_decision": [
+    {
+      "name": "none",
+      "decision": "No additional engineered features required for baseline model.",
+      "reason": "Available columns do not include ply thickness or stacking sequence; arbitrary interactions/ratios are deferred until Step 4 experiments."
+    }
+  ],
+  "units": {
+    "fiber_type": "category",
+    "resin_type": "category",
+    "density_g_cm3": "g/cm^3",
+    "layer_count": "count",
+    "curing_temperature_c": "deg C",
+    "fiber_volume_fraction": "fraction",
+    "void_content_pct": "percent",
+    "tensile_strength_mpa": "MPa"
+  },
+  "feature_descriptions": {
+    "fiber_type": "Composite reinforcement family as provided in dataset.",
+    "resin_type": "Polymer/resin family as provided in dataset.",
+    "density_g_cm3": "Composite density in grams per cubic centimeter.",
+    "layer_count": "Number of laminate layers in sample.",
+    "curing_temperature_c": "Curing temperature in degrees Celsius.",
+    "fiber_volume_fraction": "Fiber volume fraction, unitless 0-1 fraction.",
+    "void_content_pct": "Void content percentage.",
+    "tensile_strength_mpa": "Measured tensile strength in MPa."
+  },
+  "leakage_decisions": {
+    "status": "PASS",
+    "target_in_features": false,
+    "suspicious_feature_names": [],
+    "decision": "target excluded from X; no feature is calculated from target"
+  },
+  "outlier_policy": {
+    "row_count": 168,
+    "target_range": {
+      "min": 3222.1,
+      "max": 4667.3
+    },
+    "feature_ranges": {
+      "density_g_cm3": {
+        "full_min": 1.4,
+        "full_max": 2.2,
+        "outlier_min": 1.4,
+        "outlier_max": 2.2,
+        "outlier_mean": 1.7907738095238097
+      },
+      "layer_count": {
+        "full_min": 6.0,
+        "full_max": 24.0,
+        "outlier_min": 10.0,
+        "outlier_max": 24.0,
+        "outlier_mean": 19.875
+      },
+      "curing_temperature_c": {
+        "full_min": 60.1,
+        "full_max": 160.0,
+        "outlier_min": 63.4,
+        "outlier_max": 159.9,
+        "outlier_mean": 126.87083333333332
+      },
+      "fiber_volume_fraction": {
+        "full_min": 0.35,
+        "full_max": 0.7,
+        "outlier_min": 0.35,
+        "outlier_max": 0.7,
+        "outlier_mean": 0.5953571428571428
+      },
+      "void_content_pct": {
+        "full_min": 0.5,
+        "full_max": 3.5,
+        "outlier_min": 0.5,
+        "outlier_max": 2.98,
+        "outlier_mean": 1.2923214285714286
+      }
+    },
+    "objective_invalid_values_found": false,
+    "finding": "outlier target rows remain within valid input feature ranges; they require domain review, not automatic removal"
+  },
+  "preprocessing_reference": "data/training/preprocessing_config.json",
+  "step4_notes": {
+    "x_columns": [
+      "fiber_type",
+      "resin_type",
+      "density_g_cm3",
+      "layer_count",
+      "curing_temperature_c",
+      "fiber_volume_fraction",
+      "void_content_pct"
+    ],
+    "y_column": "tensile_strength_mpa",
+    "preprocessing_pipeline": "src/preprocessing.py",
+    "fit_policy": "fit preprocessor only on training split"
+  }
+}

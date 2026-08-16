@@ -1,0 +1,381 @@
+{
+  "project_stage": "Step 5 - Model Evaluation, Validation and Final Model Selection",
+  "model": "ANN/MLP",
+  "data_validation": {
+    "dataset": "data/training/ml_ready_features.csv",
+    "train_rows": 8000,
+    "test_rows": 2000,
+    "test_set_untouched": true
+  },
+  "leakage_assessment": {
+    "status": "PASS",
+    "target_in_x": false,
+    "train_test_overlap_rows": 0,
+    "row_identifier_columns": [],
+    "pipeline_steps": [
+      "preprocessing",
+      "model"
+    ],
+    "preprocessing_fit_policy": "saved artifact is sklearn Pipeline; preprocessing precedes model"
+  },
+  "saved_model_validation": {
+    "status": "PASS",
+    "pipeline_steps": [
+      "preprocessing",
+      "model"
+    ],
+    "prediction_count": 2000,
+    "predictions_numeric": true,
+    "nan_predictions": 0,
+    "inf_predictions": 0
+  },
+  "final_test_metrics": {
+    "train": {
+      "mae": 32.75853735239422,
+      "rmse": 43.305601528501995,
+      "r2": 0.9951291094648627
+    },
+    "test": {
+      "mae": 32.51222564180672,
+      "rmse": 43.37764030916816,
+      "r2": 0.9952189943216101
+    },
+    "prediction_summary": {
+      "min_prediction": 529.285059482601,
+      "max_prediction": 4000.4737125729607,
+      "mean_prediction": 1601.481920164174,
+      "min_actual": 489.8,
+      "max_actual": 4259.8,
+      "mean_actual": 1604.7162000000003
+    }
+  },
+  "residual_analysis": {
+    "mean_residual": 3.2342798358261162,
+    "median_residual": 3.412522329822309,
+    "std_residual": 43.26771498837552,
+    "min_residual": -200.6470704980884,
+    "max_residual": 307.7119638675367,
+    "mae": 32.51222564180672,
+    "rmse": 43.37764030916816
+  },
+  "top_10_errors": [
+    {
+      "actual_strength": 4219.8,
+      "predicted_strength": 3912.0880361324635,
+      "absolute_error": 307.7119638675367,
+      "residual": 307.7119638675367,
+      "fiber_type": "Carbon",
+      "resin_type": "Epoxy",
+      "density_g_cm3": 2.12,
+      "layer_count": 22,
+      "curing_temperature_c": 133.3,
+      "fiber_volume_fraction": 0.61,
+      "void_content_pct": 0.56
+    },
+    {
+      "actual_strength": 4259.8,
+      "predicted_strength": 4000.4737125729607,
+      "absolute_error": 259.32628742703946,
+      "residual": 259.32628742703946,
+      "fiber_type": "Carbon",
+      "resin_type": "Epoxy",
+      "density_g_cm3": 2.14,
+      "layer_count": 21,
+      "curing_temperature_c": 136.3,
+      "fiber_volume_fraction": 0.68,
+      "void_content_pct": 0.59
+    },
+    {
+      "actual_strength": 4135.0,
+      "predicted_strength": 3879.511630184839,
+      "absolute_error": 255.48836981516115,
+      "residual": 255.48836981516115,
+      "fiber_type": "Carbon",
+      "resin_type": "Epoxy",
+      "density_g_cm3": 2.0,
+      "layer_count": 22,
+      "curing_temperature_c": 156.6,
+      "fiber_volume_fraction": 0.59,
+      "void_content_pct": 1.01
+    },
+    {
+      "actual_strength": 4021.3,
+      "predicted_strength": 3781.821077168737,
+      "absolute_error": 239.4789228312634,
+      "residual": 239.4789228312634,
+      "fiber_type": "Carbon",
+      "resin_type": "Epoxy",
+      "density_g_cm3": 2.17,
+      "layer_count": 20,
+      "curing_temperature_c": 137.8,
+      "fiber_volume_fraction": 0.67,
+      "void_content_pct": 1.11
+    },
+    {
+      "actual_strength": 3987.8,
+      "predicted_strength": 3771.3022235389026,
+      "absolute_error": 216.4977764610976,
+      "residual": 216.4977764610976,
+      "fiber_type": "Carbon",
+      "resin_type": "Epoxy",
+      "density_g_cm3": 1.62,
+      "layer_count": 19,
+      "curing_temperature_c": 148.2,
+      "fiber_volume_fraction": 0.66,
+      "void_content_pct": 1.15
+    },
+    {
+      "actual_strength": 2034.0,
+      "predicted_strength": 2234.6470704980884,
+      "absolute_error": 200.6470704980884,
+      "residual": -200.6470704980884,
+      "fiber_type": "Carbon",
+      "resin_type": "Epoxy",
+      "density_g_cm3": 2.11,
+      "layer_count": 6,
+      "curing_temperature_c": 159.2,
+      "fiber_volume_fraction": 0.49,
+      "void_content_pct": 1.75
+    },
+    {
+      "actual_strength": 3463.1,
+      "predicted_strength": 3278.9949551511972,
+      "absolute_error": 184.10504484880266,
+      "residual": 184.10504484880266,
+      "fiber_type": "Carbon",
+      "resin_type": "Epoxy",
+      "density_g_cm3": 1.67,
+      "layer_count": 13,
+      "curing_temperature_c": 147.9,
+      "fiber_volume_fraction": 0.66,
+      "void_content_pct": 1.22
+    },
+    {
+      "actual_strength": 1934.9,
+      "predicted_strength": 2114.6779407717627,
+      "absolute_error": 179.7779407717626,
+      "residual": -179.7779407717626,
+      "fiber_type": "Glass",
+      "resin_type": "Epoxy",
+      "density_g_cm3": 2.05,
+      "layer_count": 24,
+      "curing_temperature_c": 148.0,
+      "fiber_volume_fraction": 0.55,
+      "void_content_pct": 0.59
+    },
+    {
+      "actual_strength": 3347.0,
+      "predicted_strength": 3174.563150648932,
+      "absolute_error": 172.43684935106785,
+      "residual": 172.43684935106785,
+      "fiber_type": "Carbon",
+      "resin_type": "Epoxy",
+      "density_g_cm3": 1.47,
+      "layer_count": 11,
+      "curing_temperature_c": 157.3,
+      "fiber_volume_fraction": 0.69,
+      "void_content_pct": 1.26
+    },
+    {
+      "actual_strength": 3742.9,
+      "predicted_strength": 3573.371839692525,
+      "absolute_error": 169.528160307475,
+      "residual": 169.528160307475,
+      "fiber_type": "Carbon",
+      "resin_type": "Epoxy",
+      "density_g_cm3": 1.96,
+      "layer_count": 19,
+      "curing_temperature_c": 123.1,
+      "fiber_volume_fraction": 0.63,
+      "void_content_pct": 1.12
+    }
+  ],
+  "cross_validation": {
+    "ANN/MLP": {
+      "mae_mean": 32.99559273335022,
+      "mae_std": 1.1678245845897224,
+      "rmse_mean": 43.54809293671898,
+      "rmse_std": 1.8828763263537938,
+      "r2_mean": 0.9950644437073534,
+      "r2_std": 0.0004442554616633095
+    },
+    "Gradient Boosting": {
+      "mae_mean": 47.74540749844112,
+      "mae_std": 0.8344519471317137,
+      "rmse_mean": 65.22673041925654,
+      "rmse_std": 1.318106502931272,
+      "r2_mean": 0.988940865186325,
+      "r2_std": 0.0004665821568023681
+    }
+  },
+  "seed_robustness": {
+    "rows": [
+      {
+        "seed": 42,
+        "mae": 32.51222564180672,
+        "rmse": 43.37764030916816,
+        "r2": 0.9952189943216101
+      },
+      {
+        "seed": 7,
+        "mae": 34.59846900672956,
+        "rmse": 46.555439172819376,
+        "r2": 0.9944600858897545
+      },
+      {
+        "seed": 21,
+        "mae": 32.75410427868244,
+        "rmse": 42.13910211698186,
+        "r2": 0.9954912303416207
+      },
+      {
+        "seed": 100,
+        "mae": 29.77243920245833,
+        "rmse": 39.07935327123754,
+        "r2": 0.9957997070377766
+      }
+    ],
+    "summary": {
+      "mae_mean": 32.40930953241926,
+      "mae_std": 1.9895543457110316,
+      "rmse_mean": 42.787883717551736,
+      "rmse_std": 3.0938865839129366,
+      "r2_mean": 0.9952425043976905,
+      "r2_std": 0.0005730243806741479
+    }
+  },
+  "subgroup_validation": {
+    "fiber_type": [
+      {
+        "group": "Aramid",
+        "count": 512,
+        "mae": 29.45831562847887,
+        "rmse": 37.62975703148405,
+        "r2": 0.9915297411883033
+      },
+      {
+        "group": "Basalt",
+        "count": 496,
+        "mae": 28.871448963880795,
+        "rmse": 36.91370943948747,
+        "r2": 0.9867430487754422
+      },
+      {
+        "group": "Carbon",
+        "count": 493,
+        "mae": 41.05265038297795,
+        "rmse": 56.82336080932603,
+        "r2": 0.9903596871126705
+      },
+      {
+        "group": "Glass",
+        "count": 499,
+        "mae": 30.826850414707913,
+        "rmse": 39.295975615234966,
+        "r2": 0.972701925627429
+      }
+    ],
+    "resin_type": [
+      {
+        "group": "Epoxy",
+        "count": 488,
+        "mae": 40.89399338956346,
+        "rmse": 57.449424800017105,
+        "r2": 0.9940993397308279
+      },
+      {
+        "group": "Phenolic",
+        "count": 516,
+        "mae": 30.278125685078926,
+        "rmse": 38.91739825500951,
+        "r2": 0.99510666173381
+      },
+      {
+        "group": "Polyester",
+        "count": 488,
+        "mae": 29.77287671741761,
+        "rmse": 37.56898849576541,
+        "r2": 0.9943344428783156
+      },
+      {
+        "group": "Vinyl Ester",
+        "count": 508,
+        "mae": 29.361231925011705,
+        "rmse": 36.649384800459494,
+        "r2": 0.9954498663702845
+      }
+    ]
+  },
+  "prediction_plausibility": {
+    "actual_target_range": {
+      "min": 456.4,
+      "max": 4667.3
+    },
+    "test_actual_range": {
+      "min": 489.8,
+      "max": 4259.8
+    },
+    "predicted_range": {
+      "min": 529.285059482601,
+      "max": 4000.4737125729607
+    },
+    "predictions_outside_observed_target_range": 0,
+    "negative_predictions": 0
+  },
+  "ann_vs_gradient_boosting": {
+    "ann": {
+      "mae": 32.51222564180672,
+      "rmse": 43.37764030916816,
+      "r2": 0.9952189943216101
+    },
+    "gradient_boosting": {
+      "mae": 47.96992793336296,
+      "rmse": 64.9924049759328,
+      "r2": 0.989267210077734
+    },
+    "rmse_advantage": 21.614764666764643,
+    "finding": "ANN advantage is substantial on this split"
+  },
+  "outlier_experiment": [
+    {
+      "experiment": "all_data_primary",
+      "model": "ANN/MLP",
+      "train_rows": 8000,
+      "test_rows": 2000,
+      "removed_train_outliers": 0,
+      "test_mae": 32.51222564180672,
+      "test_rmse": 43.37764030916816,
+      "test_r2": 0.99521899432161
+    },
+    {
+      "experiment": "outlier_filtered_training_only",
+      "model": "ANN/MLP",
+      "train_rows": 7869,
+      "test_rows": 2000,
+      "removed_train_outliers": 131,
+      "test_mae": 34.889312976012036,
+      "test_rmse": 52.136087845880205,
+      "test_r2": 0.9930934001870584
+    }
+  ],
+  "overfitting_assessment": {
+    "train_mae": 32.75853735239422,
+    "test_mae": 32.51222564180672,
+    "train_rmse": 43.305601528501995,
+    "test_rmse": 43.37764030916816,
+    "train_r2": 0.9951291094648627,
+    "test_r2": 0.9952189943216101,
+    "finding": "no meaningful overfitting detected"
+  },
+  "plots": {
+    "actual_vs_predicted": "reports/step5_model_validation/actual_vs_predicted.html",
+    "residual_vs_predicted": "reports/step5_model_validation/residual_vs_predicted.html",
+    "residual_distribution": "reports/step5_model_validation/residual_distribution.html",
+    "cv_comparison": "reports/step5_model_validation/cv_comparison.html",
+    "seed_robustness": "reports/step5_model_validation/seed_robustness.html"
+  },
+  "final_decision": {
+    "status": "READY",
+    "reason": "No leakage found; saved model valid; metrics stable; predictions remain within dataset-supported range."
+  }
+}

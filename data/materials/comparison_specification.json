@@ -1,0 +1,45 @@
+{
+  "source_dataset": "/Users/143ns/BTECH/PORTFOLIO/Projects/P7-Gagana/CompositeAI/data/kaggle/3/aerospace_structural_design_dataset.csv",
+  "material_column": "Material Type",
+  "strength_column": "Tensile Strength (MPa)",
+  "density_column": "ρ (kg/m³)",
+  "aggregation_rule": "mean_by_material",
+  "output_fields": [
+    "material",
+    "strength_mpa",
+    "density_g_cm3",
+    "strength_ratio",
+    "strength_to_weight"
+  ],
+  "ranking_outputs": [
+    "top_stronger_than",
+    "top_weaker_than",
+    "closest_match",
+    "best_strength_to_weight"
+  ],
+  "materials": [
+    {
+      "material": "Aluminum",
+      "strength_mpa": 840.2027317085419,
+      "density_g_cm3": 3.123793547502635,
+      "strength_to_weight": 268.9687134990899
+    },
+    {
+      "material": "Carbon Fiber",
+      "strength_mpa": 906.0984783226876,
+      "density_g_cm3": 3.0683709269622486,
+      "strength_to_weight": 295.3027844061031
+    },
+    {
+      "material": "Titanium",
+      "strength_mpa": 890.2145159064662,
+      "density_g_cm3": 2.8642830382785402,
+      "strength_to_weight": 310.798375722496
+    }
+  ],
+  "composite_density_supported": true,
+  "dataset_shape": {
+    "rows": 300,
+    "columns": 22
+  }
+}

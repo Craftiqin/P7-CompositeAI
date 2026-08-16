@@ -1,0 +1,37 @@
+[
+  {
+    "material": "Aluminum 2024-T3",
+    "category": "Aluminum Alloy",
+    "tensile_strength_mpa": 470,
+    "density_g_cm3": 2.78,
+    "application": "Aircraft fuselage structures"
+  },
+  {
+    "material": "Aluminum 7075-T6",
+    "category": "Aluminum Alloy",
+    "tensile_strength_mpa": 572,
+    "density_g_cm3": 2.81,
+    "application": "Aircraft wing structures"
+  },
+  {
+    "material": "Titanium Ti-6Al-4V",
+    "category": "Titanium Alloy",
+    "tensile_strength_mpa": 950,
+    "density_g_cm3": 4.43,
+    "application": "Landing gear and aerospace structures"
+  },
+  {
+    "material": "Stainless Steel 304",
+    "category": "Steel",
+    "tensile_strength_mpa": 515,
+    "density_g_cm3": 8.0,
+    "application": "General structural components"
+  },
+  {
+    "material": "Inconel 718",
+    "category": "Nickel Superalloy",
+    "tensile_strength_mpa": 1240,
+    "density_g_cm3": 8.19,
+    "application": "Jet engine and turbine components"
+  }
+]

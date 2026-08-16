@@ -1,0 +1,368 @@
+{
+  "feature_profiles": {
+    "fiber_type": {
+      "type": "categorical",
+      "dtype": "str",
+      "cardinality": 4,
+      "categories": [
+        "Aramid",
+        "Basalt",
+        "Carbon",
+        "Glass"
+      ],
+      "counts": {
+        "Glass": 2555,
+        "Carbon": 2514,
+        "Aramid": 2472,
+        "Basalt": 2459
+      },
+      "missing_values": 0
+    },
+    "resin_type": {
+      "type": "categorical",
+      "dtype": "str",
+      "cardinality": 4,
+      "categories": [
+        "Epoxy",
+        "Phenolic",
+        "Polyester",
+        "Vinyl Ester"
+      ],
+      "counts": {
+        "Phenolic": 2517,
+        "Epoxy": 2517,
+        "Vinyl Ester": 2494,
+        "Polyester": 2472
+      },
+      "missing_values": 0
+    },
+    "density_g_cm3": {
+      "type": "numerical",
+      "dtype": "float64",
+      "min": 1.4,
+      "max": 2.2,
+      "mean": 1.798617,
+      "median": 1.8,
+      "std": 0.2322972094329827,
+      "missing_values": 0,
+      "zero_values": 0,
+      "negative_values": 0
+    },
+    "layer_count": {
+      "type": "numerical",
+      "dtype": "int64",
+      "min": 6.0,
+      "max": 24.0,
+      "mean": 15.0714,
+      "median": 15.0,
+      "std": 5.467091635329968,
+      "missing_values": 0,
+      "zero_values": 0,
+      "negative_values": 0
+    },
+    "curing_temperature_c": {
+      "type": "numerical",
+      "dtype": "float64",
+      "min": 60.1,
+      "max": 160.0,
+      "mean": 110.53865,
+      "median": 110.6,
+      "std": 28.78775331024575,
+      "missing_values": 0,
+      "zero_values": 0,
+      "negative_values": 0
+    },
+    "fiber_volume_fraction": {
+      "type": "numerical",
+      "dtype": "float64",
+      "min": 0.35,
+      "max": 0.7,
+      "mean": 0.5252120000000001,
+      "median": 0.53,
+      "std": 0.10109400108664,
+      "missing_values": 0,
+      "zero_values": 0,
+      "negative_values": 0
+    },
+    "void_content_pct": {
+      "type": "numerical",
+      "dtype": "float64",
+      "min": 0.5,
+      "max": 3.5,
+      "mean": 1.993599,
+      "median": 1.99,
+      "std": 0.8607318648297583,
+      "missing_values": 0,
+      "zero_values": 0,
+      "negative_values": 0
+    }
+  },
+  "target_analysis": {
+    "min": 456.4,
+    "max": 4667.3,
+    "mean": 1605.7597,
+    "median": 1485.8,
+    "std": 621.9041379276931,
+    "skewness": 0.8870191881801667,
+    "quartiles": {
+      "q1": 1134.975,
+      "q2": 1485.8,
+      "q3": 1968.175
+    },
+    "iqr": 833.2,
+    "distribution_note": "right-skewed"
+  },
+  "numerical_feature_target_relationships": [
+    {
+      "feature": "density_g_cm3",
+      "pearson_correlation": -0.010531,
+      "spearman_correlation": -0.010476,
+      "recommendation": "retain; weak linear signal, may still help nonlinear models"
+    },
+    {
+      "feature": "layer_count",
+      "pearson_correlation": 0.384335,
+      "spearman_correlation": 0.388974,
+      "recommendation": "retain; weak to moderate linear signal"
+    },
+    {
+      "feature": "curing_temperature_c",
+      "pearson_correlation": 0.174698,
+      "spearman_correlation": 0.172954,
+      "recommendation": "retain; weak linear signal, may still help nonlinear models"
+    },
+    {
+      "feature": "fiber_volume_fraction",
+      "pearson_correlation": 0.202657,
+      "spearman_correlation": 0.192932,
+      "recommendation": "retain; weak to moderate linear signal"
+    },
+    {
+      "feature": "void_content_pct",
+      "pearson_correlation": -0.284542,
+      "spearman_correlation": -0.279585,
+      "recommendation": "retain; weak to moderate linear signal"
+    }
+  ],
+  "categorical_feature_target_relationships": {
+    "fiber_type": [
+      {
+        "category": "Aramid",
+        "count": 2472,
+        "target_mean": 1689.0967233009708,
+        "target_median": 1651.85,
+        "target_min": 681.4,
+        "target_max": 3211.0
+      },
+      {
+        "category": "Basalt",
+        "count": 2459,
+        "target_mean": 1373.5338755591704,
+        "target_median": 1346.2,
+        "target_min": 554.7,
+        "target_max": 2718.0
+      },
+      {
+        "category": "Carbon",
+        "count": 2514,
+        "target_mean": 2316.697215592681,
+        "target_median": 2261.5,
+        "target_min": 928.7,
+        "target_max": 4667.3
+      },
+      {
+        "category": "Glass",
+        "count": 2555,
+        "target_mean": 1049.101095890411,
+        "target_median": 1029.9,
+        "target_min": 456.4,
+        "target_max": 1979.0
+      }
+    ],
+    "resin_type": [
+      {
+        "category": "Epoxy",
+        "count": 2517,
+        "target_mean": 1904.525387365912,
+        "target_median": 1776.4,
+        "target_min": 655.9,
+        "target_max": 4667.3
+      },
+      {
+        "category": "Phenolic",
+        "count": 2517,
+        "target_mean": 1511.5458879618593,
+        "target_median": 1405.2,
+        "target_min": 488.8,
+        "target_max": 3511.8
+      },
+      {
+        "category": "Polyester",
+        "count": 2472,
+        "target_mean": 1422.6545711974109,
+        "target_median": 1325.3,
+        "target_min": 456.4,
+        "target_max": 3553.8
+      },
+      {
+        "category": "Vinyl Ester",
+        "count": 2494,
+        "target_mean": 1580.81134723336,
+        "target_median": 1468.6,
+        "target_min": 508.0,
+        "target_max": 3771.5
+      }
+    ]
+  },
+  "multicollinearity": {
+    "strong_pairs": [],
+    "all_pairs": [
+      {
+        "feature_1": "density_g_cm3",
+        "feature_2": "layer_count",
+        "correlation": 0.013022,
+        "abs_correlation": 0.013022,
+        "recommendation": "retain"
+      },
+      {
+        "feature_1": "density_g_cm3",
+        "feature_2": "curing_temperature_c",
+        "correlation": -0.010803,
+        "abs_correlation": 0.010803,
+        "recommendation": "retain"
+      },
+      {
+        "feature_1": "curing_temperature_c",
+        "feature_2": "void_content_pct",
+        "correlation": 0.010375,
+        "abs_correlation": 0.010375,
+        "recommendation": "retain"
+      },
+      {
+        "feature_1": "curing_temperature_c",
+        "feature_2": "fiber_volume_fraction",
+        "correlation": 0.007731,
+        "abs_correlation": 0.007731,
+        "recommendation": "retain"
+      },
+      {
+        "feature_1": "layer_count",
+        "feature_2": "fiber_volume_fraction",
+        "correlation": -0.007526,
+        "abs_correlation": 0.007526,
+        "recommendation": "retain"
+      },
+      {
+        "feature_1": "density_g_cm3",
+        "feature_2": "void_content_pct",
+        "correlation": -0.006388,
+        "abs_correlation": 0.006388,
+        "recommendation": "retain"
+      },
+      {
+        "feature_1": "fiber_volume_fraction",
+        "feature_2": "void_content_pct",
+        "correlation": -0.00461,
+        "abs_correlation": 0.00461,
+        "recommendation": "retain"
+      },
+      {
+        "feature_1": "density_g_cm3",
+        "feature_2": "fiber_volume_fraction",
+        "correlation": -0.003855,
+        "abs_correlation": 0.003855,
+        "recommendation": "retain"
+      },
+      {
+        "feature_1": "layer_count",
+        "feature_2": "void_content_pct",
+        "correlation": 0.003056,
+        "abs_correlation": 0.003056,
+        "recommendation": "retain"
+      },
+      {
+        "feature_1": "layer_count",
+        "feature_2": "curing_temperature_c",
+        "correlation": 0.000914,
+        "abs_correlation": 0.000914,
+        "recommendation": "retain"
+      }
+    ],
+    "finding": "no strong multicollinearity found"
+  },
+  "outlier_analysis": {
+    "row_count": 168,
+    "target_range": {
+      "min": 3222.1,
+      "max": 4667.3
+    },
+    "feature_ranges": {
+      "density_g_cm3": {
+        "full_min": 1.4,
+        "full_max": 2.2,
+        "outlier_min": 1.4,
+        "outlier_max": 2.2,
+        "outlier_mean": 1.7907738095238097
+      },
+      "layer_count": {
+        "full_min": 6.0,
+        "full_max": 24.0,
+        "outlier_min": 10.0,
+        "outlier_max": 24.0,
+        "outlier_mean": 19.875
+      },
+      "curing_temperature_c": {
+        "full_min": 60.1,
+        "full_max": 160.0,
+        "outlier_min": 63.4,
+        "outlier_max": 159.9,
+        "outlier_mean": 126.87083333333332
+      },
+      "fiber_volume_fraction": {
+        "full_min": 0.35,
+        "full_max": 0.7,
+        "outlier_min": 0.35,
+        "outlier_max": 0.7,
+        "outlier_mean": 0.5953571428571428
+      },
+      "void_content_pct": {
+        "full_min": 0.5,
+        "full_max": 3.5,
+        "outlier_min": 0.5,
+        "outlier_max": 2.98,
+        "outlier_mean": 1.2923214285714286
+      }
+    },
+    "objective_invalid_values_found": false,
+    "finding": "outlier target rows remain within valid input feature ranges; they require domain review, not automatic removal"
+  },
+  "leakage_review": {
+    "status": "PASS",
+    "target_in_features": false,
+    "suspicious_feature_names": [],
+    "decision": "target excluded from X; no feature is calculated from target"
+  },
+  "baseline_feature_set": {
+    "numerical": [
+      "density_g_cm3",
+      "layer_count",
+      "curing_temperature_c",
+      "fiber_volume_fraction",
+      "void_content_pct"
+    ],
+    "categorical": [
+      "fiber_type",
+      "resin_type"
+    ],
+    "target": "tensile_strength_mpa",
+    "x_columns": [
+      "fiber_type",
+      "resin_type",
+      "density_g_cm3",
+      "layer_count",
+      "curing_temperature_c",
+      "fiber_volume_fraction",
+      "void_content_pct"
+    ]
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "source_name": "Dataset for Beyond Double-Double Theory: n-Directional Stacking Sequence Optimisation in Composite Laminates",
+  "doi": "10.5281/zenodo.15864524",
+  "resolved_record_doi": "10.5281/zenodo.15864525",
+  "url": "https://zenodo.org/records/15864525",
+  "api_url": "https://zenodo.org/api/records/15864525",
+  "publisher": "Zenodo / TU Delft Research Portal",
+  "research_institution": [
+    "Lappeenranta-Lahti University of Technology",
+    "Delft University of Technology"
+  ],
+  "authors": [
+    "Almeida Jr, Humberto",
+    "Balonek, Emilia",
+    "G. P. Castro, Saullo"
+  ],
+  "publication": "Beyond Double-Double Theory: n-Directional Stacking Sequence Optimisation in Composite Laminates, Composite Structures 373, Article 119586, 2025",
+  "license": "mit-license",
+  "download_date": "2026-08-13",
+  "raw_files": [
+    "Case2_DDDD_pymoo.py",
+    "Case2_DDDD_pymoo_free.py",
+    "Case2_DDDD_pymoo_load.py",
+    "Case2_DDDD_pymoo_uniaxial_free.py",
+    "Case2_DDD_pymoo.py",
+    "Case2_DDD_pymoo_free.py",
+    "Case2_DDD_pymoo_load.py",
+    "Case2_DDD_pymoo_uniaxial_free.py",
+    "Case2_DD_pymoo.py",
+    "Case2_DD_pymoo_free.py",
+    "Case2_DD_pymoo_load.py",
+    "Case2_DD_pymoo_uniaxial_free.py",
+    "Case2_D_pymoo.py",
+    "Case2_D_pymoo_free.py",
+    "Case2_D_pymoo_load.py",
+    "Case2_D_pymoo_uniaxial_free.py",
+    "DDDD_Case1_pymoo.py",
+    "DDDD_Case1_pymoo_free.py",
+    "DDDD_Case1_pymoo_load.py",
+    "DDDD_Case1_pymoo_uniaxial_free.py",
+    "DDD_Case1_pymoo.py",
+    "DDD_Case1_pymoo_free.py",
+    "DDD_Case1_pymoo_load.py",
+    "DDD_Case1_pymoo_uniaxial_free.py",
+    "DD_Case1_pymoo.py",
+    "DD_Case1_pymoo_free.py",
+    "DD_Case1_pymoo_load.py",
+    "DD_Case1_pymoo_uniaxial_free.py",
+    "D_Case1_pymoo.py",
+    "D_Case1_pymoo_free.py",
+    "D_Case1_pymoo_load.py",
+    "D_Case1_pymoo_uniaxial_free.py",
+    "README.txt",
+    "zenodo_record_metadata.json"
+  ],
+  "file_formats": [
+    ".py",
+    ".txt",
+    ".json"
+  ],
+  "dataset_type": "Optimization software/results code; not experimental measurements",
+  "units": {
+    "E11_E22_G12_G13_G23": "Pa in source code",
+    "nu12": "dimensionless",
+    "ply_thickness": "m in source code, converted from 0.005 in",
+    "load_Nxx_load_Nyy": "lb/in in source comments, converted in code to N/m",
+    "lambda_cb": "N per README",
+    "lambda_cs": "N per README",
+    "stacking_sequence": "degrees"
+  },
+  "description": "Research code for 48- and 64-ply symmetric/balanced laminate stacking-sequence optimisation under uniaxial/biaxial compressive loading.",
+  "transformations_performed": [
+    "Downloaded raw Zenodo files unchanged into raw folder.",
+    "Created metadata and inventory only; no source data values modified.",
+    "Parsed constants from source code without executing optimization scripts."
+  ],
+  "limitations": [
+    "Source is software/optimization output, not experimental data.",
+    "Source provides stiffness properties E11/E22/G12/nu12 and ply thickness in code.",
+    "Source uses strain allowables from Haftka 1993 rather than Xt/Xc/Yt/Yc/S stress allowables required by current Maximum Stress implementation.",
+    "Full reproduction requires external packages composites, bfscplate2d, scipy, and pymoo.",
+    "Current project CLT can use stiffness card for ABD/stress calculations, but optimization remains not ready until reference validation and objective alignment are completed."
+  ]
+}

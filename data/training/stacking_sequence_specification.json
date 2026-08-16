@@ -1,0 +1,89 @@
+{
+  "project_stage": "Step 7 - Stacking Sequence Representation",
+  "status": "representation_ready_strength_evaluation_not_implemented",
+  "sequence_representation": {
+    "type": "ordered_list_of_ply_orientations",
+    "units": "degrees",
+    "example": [0, 45, -45, 90, 90, -45, 45, 0],
+    "order_policy": "preserve exact ply order; never sort sequence"
+  },
+  "default_allowed_angles": [-45, 0, 45, 90],
+  "allowed_angles_policy": "configurable through SequenceConfig.allowed_angles",
+  "ply_count_configuration": {
+    "expected_ply_count": "optional for validation; required for candidate generation",
+    "minimum_valid_ply_count": 1
+  },
+  "symmetry_rule": {
+    "function": "is_symmetric(sequence)",
+    "definition": "A sequence is symmetric when it equals its reverse, representing mirror symmetry about the mid-plane.",
+    "required_by_default": false
+  },
+  "balance_rule": {
+    "function": "is_balanced(sequence)",
+    "definition": "For every positive angle whose negative angle is allowed, count(+theta) must equal count(-theta). Zero and 90-degree plies do not affect this rule.",
+    "required_by_default": false
+  },
+  "candidate_generation": {
+    "function": "generate_candidate_sequences(config)",
+    "search_space_estimate": "len(allowed_angles) ** ply_count, reduced to len(allowed_angles) ** ceil(ply_count / 2) when symmetry is required",
+    "large_search_policy": "If raw search space exceeds max_search_space, exhaustive generation stops and Step 8 optimization/search strategy is required."
+  },
+  "current_ml_model_limitation": "The current ML model does not use stacking sequence as an input and therefore cannot currently evaluate sequence-dependent strength.",
+  "current_ann_expected_features": [
+    "fiber_type",
+    "resin_type",
+    "density_g_cm3",
+    "layer_count",
+    "curing_temperature_c",
+    "fiber_volume_fraction",
+    "void_content_pct"
+  ],
+  "strength_evaluation_routes": {
+    "route_a_sequence_specific_dataset": {
+      "required_data": [
+        "stacking_sequence",
+        "material_properties",
+        "loading_condition",
+        "measured_or_simulated_strength"
+      ],
+      "repository_support": "not_implemented"
+    },
+    "route_b_classical_laminate_theory": {
+      "required_inputs": [
+        "ply_orientation",
+        "ply_material_properties",
+        "ply_thickness",
+        "loading_condition",
+        "failure_criterion"
+      ],
+      "repository_support": "not_implemented"
+    },
+    "route_c_hybrid_physics_ml": {
+      "required_inputs": [
+        "sequence_features",
+        "physics_outputs_or_labels",
+        "validated_strength_targets"
+      ],
+      "repository_support": "not_implemented"
+    }
+  },
+  "supported_now": "Sequence representation, validation, search-space estimation, and bounded candidate generation.",
+  "not_supported_now": [
+    "sequence-dependent strength prediction",
+    "stacking-sequence optimization",
+    "classical laminate theory calculations",
+    "failure criterion evaluation",
+    "new sequence-aware ML model training"
+  ],
+  "assumptions": [
+    "Angles are represented as whole degrees.",
+    "Baseline allowed angles are -45, 0, 45, and 90 degrees.",
+    "Balance and symmetry are independent constraints.",
+    "Candidate generation does not assign or infer strength values."
+  ],
+  "limitations": [
+    "Current Kaggle training dataset has no ply-by-ply sequence columns.",
+    "Current ANN remains a material/process tensile-strength predictor only.",
+    "Sequence-dependent evaluation requires Step 8 mechanics, data, or hybrid route."
+  ]
+}

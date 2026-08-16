@@ -1,0 +1,167 @@
+{
+  "project_stage": "Step 8 - Sequence-Dependent Strength Evaluation Strategy",
+  "approach": "Classical Laminate Theory architecture with explicit material-card inputs",
+  "repository_material_property_audit": {
+    "data/kaggle/2/composite_material_strength.csv": {
+      "available": [
+        "fiber_type",
+        "resin_type",
+        "density_g_cm3",
+        "layer_count",
+        "curing_temperature_c",
+        "fiber_volume_fraction",
+        "void_content_pct",
+        "tensile_strength_mpa"
+      ],
+      "missing_for_clt": [
+        "E1",
+        "E2",
+        "G12",
+        "nu12",
+        "ply_thickness",
+        "Xt",
+        "Xc",
+        "Yt",
+        "Yc",
+        "S"
+      ],
+      "use_for_clt": "not sufficient"
+    },
+    "data/kaggle/1/X_bp.xlsx": {
+      "available": [
+        "density",
+        "elastic modulus",
+        "tensile modulus",
+        "tensile strength"
+      ],
+      "missing_for_clt": [
+        "orthotropic E1/E2 separation",
+        "G12",
+        "nu12",
+        "ply_thickness",
+        "directional allowables Xt/Xc/Yt/Yc/S",
+        "stacking sequence"
+      ],
+      "use_for_clt": "not sufficient"
+    },
+    "data/kaggle/1/X_nup.xlsx": {
+      "available": [
+        "winding angle",
+        "winding pitch",
+        "winding density"
+      ],
+      "missing_for_clt": [
+        "E1",
+        "E2",
+        "G12",
+        "nu12",
+        "ply_thickness",
+        "Xt",
+        "Xc",
+        "Yt",
+        "Yc",
+        "S"
+      ],
+      "use_for_clt": "not sufficient"
+    },
+    "data/kaggle/3/aerospace_structural_design_dataset.csv": {
+      "available": [
+        "Material Type",
+        "E (GPa)",
+        "ν",
+        "ρ (kg/m³)",
+        "Tensile Strength (MPa)",
+        "Structural Thickness (mm)"
+      ],
+      "missing_for_clt": [
+        "orthotropic E1/E2 separation",
+        "G12",
+        "directional allowables Xt/Xc/Yt/Yc/S",
+        "ply_thickness",
+        "stacking sequence"
+      ],
+      "use_for_clt": "not sufficient"
+    }
+  },
+  "material_card": {
+    "class": "LaminaMaterial",
+    "required_stiffness_properties_si": {
+      "e1_pa": "longitudinal modulus, Pa",
+      "e2_pa": "transverse modulus, Pa",
+      "g12_pa": "in-plane shear modulus, Pa",
+      "nu12": "major Poisson ratio, dimensionless",
+      "ply_thickness_m": "single-ply thickness, meters"
+    },
+    "optional_strength_allowables_si": {
+      "xt_pa": "longitudinal tensile allowable, Pa",
+      "xc_pa": "longitudinal compressive allowable, Pa",
+      "yt_pa": "transverse tensile allowable, Pa",
+      "yc_pa": "transverse compressive allowable, Pa",
+      "s_pa": "in-plane shear allowable, Pa"
+    }
+  },
+  "load_case": {
+    "class": "LaminateLoadCase",
+    "units": {
+      "Nx": "N/m",
+      "Ny": "N/m",
+      "Nxy": "N/m",
+      "Mx": "N",
+      "My": "N",
+      "Mxy": "N"
+    },
+    "initial_supported_case": "uniaxial tensile load when Nx > 0 and other components are zero",
+    "load_magnitude_policy": "must be supplied by user/config; repository does not invent design loads"
+  },
+  "implemented_equations": {
+    "Q": "orthotropic reduced stiffness matrix under plane stress",
+    "Qbar": "standard transformed reduced stiffness matrix for each ply angle",
+    "A": "sum(Qbar_k * (z_k - z_k-1))",
+    "B": "0.5 * sum(Qbar_k * (z_k^2 - z_k-1^2))",
+    "D": "(1/3) * sum(Qbar_k * (z_k^3 - z_k-1^3))",
+    "strain_response": "[epsilon0, kappa] = ABD^-1 * [N, M]",
+    "ply_stress": "global and local ply strain/stress calculated at ply mid-surface"
+  },
+  "failure_criterion": {
+    "implemented": "Maximum Stress",
+    "available_only_when": [
+      "Xt",
+      "Xc",
+      "Yt",
+      "Yc",
+      "S"
+    ],
+    "missing_allowables_policy": "return failure_evaluation_available=false and do not return fabricated failure index"
+  },
+  "optimization_status": {
+    "implemented": false,
+    "reason": "No verified complete lamina material card, strength allowables, or load case exists in repository.",
+    "required_before_enable": [
+      "verified E1/E2/G12/nu12/ply_thickness for selected lamina",
+      "verified Xt/Xc/Yt/Yc/S allowables",
+      "defined load case magnitude and constraints",
+      "validated objective such as minimize Maximum Stress failure index or maximize allowable load factor"
+    ]
+  },
+  "separation_from_ann": {
+    "ann_system": "material/process tensile-strength predictor using seven original features",
+    "clt_system": "sequence-aware mechanics evaluator using material card, stacking sequence, and load case",
+    "policy": "Do not feed stacking_sequence into current ANN and do not claim ANN learned ply orientation."
+  },
+  "future_hybrid_architecture": {
+    "inputs": [
+      "material/process data",
+      "stacking sequence",
+      "CLT-derived features",
+      "validated sequence-aware labels"
+    ],
+    "model": "future sequence-aware ML model",
+    "status": "not implemented in Step 8"
+  },
+  "limitations": [
+    "No repository dataset currently provides complete orthotropic lamina properties.",
+    "CLT evaluator can run only when caller supplies explicit material-card values.",
+    "Failure evaluation is unavailable when strength allowables are missing.",
+    "Optimization remains disabled until verified material data and objective exist."
+  ]
+}

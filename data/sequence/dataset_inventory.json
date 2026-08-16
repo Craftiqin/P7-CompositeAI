@@ -1,0 +1,61 @@
+{
+  "sources": [
+    {
+      "name": "Dataset for Beyond Double-Double Theory: n-Directional Stacking Sequence Optimisation in Composite Laminates",
+      "source": "https://zenodo.org/records/15864525",
+      "doi": "10.5281/zenodo.15864524",
+      "provenance": {
+        "authors": [
+          "Almeida Jr, Humberto",
+          "Balonek, Emilia",
+          "G. P. Castro, Saullo"
+        ],
+        "publisher": "Zenodo / TU Delft Research Portal",
+        "license": "mit-license",
+        "download_date": "2026-08-13"
+      },
+      "type": "Optimization software/results code; not experimental measurements",
+      "fields": {
+        "records": 32,
+        "ply_counts": [
+          48,
+          64
+        ],
+        "material_properties": [
+          "E11",
+          "E22",
+          "G12",
+          "nu12",
+          "ply_thickness"
+        ],
+        "missing_strength_properties": [
+          "Xt",
+          "Xc",
+          "Yt",
+          "Yc",
+          "S"
+        ],
+        "outputs": [
+          "reference_buckling_load_lambda_cb",
+          "reference_failure_load_lambda_cs"
+        ]
+      },
+      "usable_for_clt": true,
+      "usable_for_sequence_ml": false,
+      "limitations": [
+        "Source is software/optimization output, not experimental data.",
+        "Source provides stiffness properties E11/E22/G12/nu12 and ply thickness in code.",
+        "Source uses strain allowables from Haftka 1993 rather than Xt/Xc/Yt/Yc/S stress allowables required by current Maximum Stress implementation.",
+        "Full reproduction requires external packages composites, bfscplate2d, scipy, and pymoo.",
+        "Current project CLT can use stiffness card for ABD/stress calculations, but optimization remains not ready until reference validation and objective alignment are completed."
+      ],
+      "status": "B - PARTIALLY USABLE"
+    }
+  ],
+  "summary": {
+    "source_count": 1,
+    "directly_usable_count": 0,
+    "partially_usable_count": 1,
+    "optimization_ready": false
+  }
+}

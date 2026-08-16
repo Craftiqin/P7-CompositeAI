@@ -1,0 +1,30 @@
+{
+  "materials": [
+    "Aluminum",
+    "Carbon Fiber",
+    "Titanium"
+  ],
+  "strength_column": "Tensile Strength (MPa)",
+  "density_column": "ρ (kg/m³)",
+  "yield_column": null,
+  "modulus_column": "Young’s Modulus",
+  "material_column": "Material Type",
+  "material_categories": {
+    "aluminum_alloys": [
+      "Aluminum"
+    ],
+    "titanium_alloys": [
+      "Titanium"
+    ]
+  },
+  "aerospace_suitability_indicators": [
+    "Altitude (m)",
+    "Operational Life (years)",
+    "Weight Efficiency",
+    "Durability"
+  ],
+  "dataset_shape": {
+    "rows": 300,
+    "columns": 22
+  }
+}

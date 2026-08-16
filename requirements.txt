@@ -1,0 +1,16 @@
+streamlit
+pandas
+numpy
+scikit-learn
+matplotlib
+plotly
+seaborn
+xgboost
+lightgbm
+catboost
+tensorflow
+joblib
+optuna
+shap
+openpyxl
+reportlab
