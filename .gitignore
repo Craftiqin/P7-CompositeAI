@@ -15,7 +15,6 @@ data/uploaded/*
 data/merged/*
 data/metadata/*
 models/*
-saved_models/*
 reports/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep

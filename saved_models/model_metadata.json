@@ -1,0 +1,54 @@
+{
+  "project_stage": "Step 4 - Google Colab Model Training and Comparison",
+  "training_environment": "local validation run; notebook is Google Colab-ready",
+  "model_name": "ANN/MLP",
+  "training_dataset": "data/training/ml_ready_features.csv",
+  "target": "tensile_strength_mpa",
+  "feature_list": [
+    "fiber_type",
+    "resin_type",
+    "density_g_cm3",
+    "layer_count",
+    "curing_temperature_c",
+    "fiber_volume_fraction",
+    "void_content_pct"
+  ],
+  "train_test_split": {
+    "test_size": 0.2,
+    "train_rows": 8000,
+    "test_rows": 2000
+  },
+  "random_state": 42,
+  "preprocessing_description": {
+    "numerical": "median imputation + StandardScaler",
+    "categorical": "most-frequent imputation + OneHotEncoder(handle_unknown='ignore')",
+    "fit_policy": "preprocessing fit only inside training Pipeline on training rows"
+  },
+  "training_date": "2026-08-13T02:47:18.319827+00:00",
+  "metrics": {
+    "mae": 32.51222564180672,
+    "rmse": 43.37764030916816,
+    "r2": 0.9952189943216101,
+    "train_mae": 32.75853735239422,
+    "train_rmse": 43.305601528501995,
+    "train_r2": 0.9951291094648627
+  },
+  "package_versions": {
+    "python": "3.11.0",
+    "sklearn": "1.8.0",
+    "xgboost": "not_available",
+    "tensorflow": "not_used"
+  },
+  "xgboost_status": "not_available_locally",
+  "plots": {
+    "actual_vs_predicted": "reports/step4_model_plots/ann_mlp_actual_vs_predicted.html",
+    "residuals": "reports/step4_model_plots/ann_mlp_residuals.html",
+    "error_distribution": "reports/step4_model_plots/ann_mlp_error_distribution.html"
+  },
+  "artifacts": {
+    "trained_model": "saved_models/best_strength_model.joblib",
+    "metadata": "saved_models/model_metadata.json",
+    "comparison_csv": "data/training/model_comparison.csv",
+    "outlier_experiment_csv": "data/training/outlier_experiment.csv"
+  }
+}
